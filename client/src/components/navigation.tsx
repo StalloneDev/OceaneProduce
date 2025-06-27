@@ -16,6 +16,7 @@ export default function Navigation() {
   };
 
   const navItems = [
+    { id: "home", label: "Accueil" },
     { id: "about", label: "About" },
     { id: "products", label: "Products" },
     { id: "advantages", label: "Advantages" },
@@ -28,8 +29,8 @@ export default function Navigation() {
           <div className="flex items-center space-x-4">
             <img src={oceaneLogo} alt="Oceane Center Logo" className="h-16 w-auto" />
             <div>
-              <h1 className="text-2xl font-bold oceane-blue font-playfair">Oceane Center</h1>
-              <p className="text-sm text-gray-600">Premium Agricultural Exports</p>
+              <h1 className="text-2xl font-bold oceane-blue font-playfair">Premium Agricultural</h1>
+              <p className="text-sm text-gray-600">Oceane Imports & Exports Center</p>
             </div>
           </div>
           
@@ -38,8 +39,16 @@ export default function Navigation() {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
                 className="text-gray-700 hover:text-blue-600 transition-colors cursor-pointer"
+                onClick={() => {
+                  if (item.id === "home") {
+                    const el = document.getElementById("home");
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                    setIsOpen(false);
+                  } else {
+                    scrollToSection(item.id);
+                  }
+                }}
               >
                 {item.label}
               </button>
@@ -65,8 +74,16 @@ export default function Navigation() {
                   {navItems.map((item) => (
                     <button
                       key={item.id}
-                      onClick={() => scrollToSection(item.id)}
                       className="text-left text-lg text-gray-700 hover:text-blue-600 transition-colors"
+                      onClick={() => {
+                        if (item.id === "home") {
+                          const el = document.getElementById("home");
+                          if (el) el.scrollIntoView({ behavior: "smooth" });
+                          setIsOpen(false);
+                        } else {
+                          scrollToSection(item.id);
+                        }
+                      }}
                     >
                       {item.label}
                     </button>

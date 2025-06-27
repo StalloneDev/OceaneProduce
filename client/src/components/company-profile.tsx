@@ -1,4 +1,5 @@
 import { MapPin, Globe, UserCheck } from "lucide-react";
+import oceaneLogo from "@assets/image4-removebg-preview_1750870939621.png";
 
 export default function CompanyProfile() {
   return (
@@ -47,17 +48,11 @@ export default function CompanyProfile() {
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div className="flex items-center justify-center h-full">
             <img 
-              src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-              alt="Agricultural export warehouse" 
-              className="rounded-xl shadow-lg w-full h-64 object-cover"
-            />
-            
-            <img 
-              src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" 
-              alt="Agricultural workers processing crops" 
-              className="rounded-xl shadow-lg w-full h-48 object-cover"
+              src={oceaneLogo}
+              alt="Oceane Center Logo"
+              className="rounded-xl shadow-lg w-full max-w-md object-contain h-full bg-white"
             />
           </div>
         </div>

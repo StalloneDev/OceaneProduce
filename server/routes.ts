@@ -3,17 +3,16 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactInquirySchema } from "@shared/schema";
 import { z } from "zod";
+import { sendContactInquiryEmail } from "./email";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Contact form submission
   app.post("/api/contact", async (req, res) => {
     try {
       const validatedData = insertContactInquirySchema.parse(req.body);
-      const inquiry = await storage.createContactInquiry(validatedData);
       
-      // Here you would typically send an email notification
-      // For now, we'll just log the inquiry
-      console.log("New contact inquiry received:", inquiry);
+      // Send email notification
+      await sendContactInquiryEmail(validatedData);
       
       res.json({ 
         success: true, 
@@ -27,6 +26,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           errors: error.errors 
         });
       } else {
+        console.error("Failed to process contact inquiry:", error);
         res.status(500).json({ 
           success: false, 
           message: "An error occurred while submitting your inquiry" 

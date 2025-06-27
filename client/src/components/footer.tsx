@@ -29,7 +29,7 @@ export default function Footer() {
               <img src={oceaneLogo} alt="Oceane Center Logo" className="h-12 w-auto" />
               <div>
                 <h3 className="text-xl font-bold font-playfair">Oceane Center</h3>
-                <p className="text-gray-400">Premium Agricultural Exports</p>
+                <p className="text-gray-400">Premium Agricultural Imports & Exports</p>
               </div>
             </div>
             <p className="text-gray-400 mb-4">
@@ -77,7 +77,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 Oceane Center. All rights reserved. Proudly exporting premium agricultural products from Benin to the world.</p>
+          <p>&copy; 2023 Oceane Center. All rights reserved. Proudly exporting premium agricultural products from Benin to the world.</p>
         </div>
       </div>
     </footer>

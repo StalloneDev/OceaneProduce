@@ -1,6 +1,12 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+
+
+
+console.log("DEBUG SMTP_EMAIL:", process.env.SMTP_EMAIL, "DEBUG SMTP_PASSWORD:", process.env.SMTP_PASSWORD);
 
 const app = express();
 app.use(express.json());

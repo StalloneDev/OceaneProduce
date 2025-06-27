@@ -38,7 +38,6 @@ const products = [
 
 export default function ContactSection() {
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -63,7 +62,6 @@ export default function ContactSection() {
         description: data.message,
       });
       form.reset();
-      setIsSubmitting(false);
     },
     onError: (error: Error) => {
       toast({
@@ -71,12 +69,10 @@ export default function ContactSection() {
         description: error.message || "Please try again later.",
         variant: "destructive",
       });
-      setIsSubmitting(false);
     },
   });
 
   const onSubmit = (data: ContactFormData) => {
-    setIsSubmitting(true);
     contactMutation.mutate(data);
   };
 
@@ -294,11 +290,11 @@ export default function ContactSection() {
 
                   <Button
                     type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-oceane-gold hover:bg-amber-600 text-white px-8 py-4 text-lg font-semibold"
+                    disabled={contactMutation.isPending}
+                    className="w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold"
+                    size="lg"
                   >
-                    <MessageSquare className="mr-2 h-5 w-5" />
-                    {isSubmitting ? "Sending..." : "Send Quote Request"}
+                    {contactMutation.isPending ? "Sending..." : "Send Inquiry"}
                   </Button>
                 </form>
               </Form>
